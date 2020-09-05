@@ -26,29 +26,48 @@ func main() {
 
 	for {
 		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Name>> ")
+		fmt.Print("Title>> ")
 		text, _ := reader.ReadString('\n')
 
 		fmt.Fprintf(c, text+"\n")
 
-		received, _ := bufio.NewReader(c).ReadString('\n')
-
-		fmt.Print("->: " + received)
 		if strings.TrimSpace(string(text)) == "STOP" {
 			fmt.Println("TCP client exiting...")
 			return
 		}
 
-		fmt.Print("Title>> ")
+		received, _ := bufio.NewReader(c).ReadString('\n')
+
+		fmt.Print(">>To ")
 		text2, _ := reader.ReadString('\n')
 		fmt.Fprintf(c, text2+"\n")
 
 		received, _ = bufio.NewReader(c).ReadString('\n')
 
+		fmt.Print(">>From ")
+		text3, _ := reader.ReadString('\n')
+		fmt.Fprintf(c, text3+"\n")
+
+		received, _ = bufio.NewReader(c).ReadString('\n')
+
+		fmt.Print(">>Date ")
+		text4, _ := reader.ReadString('\n')
+		fmt.Fprintf(c, text4+"\n")
+
+		received, _ = bufio.NewReader(c).ReadString('\n')
+
+		fmt.Print(">>Content ")
+		text5, _ := reader.ReadString('\n')
+		fmt.Fprintf(c, text5+"\n")
+
+		received, _ = bufio.NewReader(c).ReadString('\n')
+
 		fmt.Print("->: " + received)
+
+		/*fmt.Print("->: " + received)
 		if strings.TrimSpace(string(text)) == "STOP" {
 			fmt.Println("TCP client exiting...")
 			return
-		}
+		}*/
 	}
 }
