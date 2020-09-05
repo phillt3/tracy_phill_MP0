@@ -35,39 +35,38 @@ func main() {
 	}
 
 	for {
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Title: ")
+		reader := bufio.NewReader(os.Stdin) //reads in input from Stdin (terminal)
+
+		fmt.Print(">>Title: ")
 		text, _ := reader.ReadString('\n')
 		fmt.Fprintf(c, text+"\n")
+		//gathering and sending Title information from user input
 
-		//received, _ := bufio.NewReader(c).ReadString('\n')
-
-		fmt.Print("To: ")
+		fmt.Print(">>To: ")
 		text2, _ := reader.ReadString('\n')
 		fmt.Fprintf(c, text2+"\n")
+		//gathering and sending recipient name/email address from user input
 
-		//received, _ = bufio.NewReader(c).ReadString('\n')
-
-		fmt.Print("From: ")
+		fmt.Print(">>From: ")
 		text3, _ := reader.ReadString('\n')
 		fmt.Fprintf(c, text3+"\n")
-
-		//received, _ = bufio.NewReader(c).ReadString('\n')
+		//gathering and sending sender name/email address from user input
 
 		t := time.Now()
 		fmt.Fprintf(c, t.Format(time.ANSIC)+"\n")
+		//using "time" package, collects information on time, and sends it in ANSIC format(easy to read in my opinion)
 
-		//received, _ = bufio.NewReader(c).ReadString('\n')
-
-		fmt.Print("Content: ")
+		fmt.Print(">>Content: ")
 		text5, _ := reader.ReadString('\n')
 		fmt.Fprintf(c, text5+"\n")
+		//gathering and sending actual message (content) from user input
 
 		received, _ := bufio.NewReader(c).ReadString('\n')
-
 		fmt.Print("->: " + received)
+		//ACK, client is sent the time at which the message was received by the server
 
-		fmt.Println("TCP client exiting...")
+		fmt.Println("ProcessA TCP client exiting...")
+		//process complete, message and info sent, program terminates with call to return, exiting main function
 		return
 	}
 }
