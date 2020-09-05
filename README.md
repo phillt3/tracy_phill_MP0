@@ -16,7 +16,7 @@ Send messages from one node to another utilizing Go packages working with TCP cl
 * golang.org
     * indirectly and directly sourced for playground testing and introductory guidance on certain golang features
   
-#To Run
+# To Run
 This project is run completely from the terminal, specifically two separate tabs, one for the server and one for the client.
 First off make sure both terminals are working within the 'processes' directory within tracy_phill_MP0. Here is an example of what my working directory looks like from the command line.
 
