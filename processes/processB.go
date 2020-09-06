@@ -71,12 +71,6 @@ func main() {
 			messrec.Content = string(netData) //storing content of message in appropriate struct field
 		}
 
-		t := time.Now()
-		myTime := "Message received at " + t.Format(time.RFC3339) + "\n"
-		c.Write([]byte(myTime))
-		//Above is the explicit ACK that will be seen by the client and user in the terminal
-		//It will provide the time and date the date was received and completely constructed
-
 		if x == 4 {
 			//final step is to take constructed message and print it to user on the server end
 			//The message has been printed in both a neat formatted version
@@ -88,6 +82,11 @@ func main() {
 			fmt.Print("Date: " + messrec.Date)
 			fmt.Print("Content: " + messrec.Content)
 			//fmt.Printf("Here is message printed in struct format:\n%v\n", messrec)
+			t := time.Now()
+			myTime := "Message received at " + t.Format(time.RFC3339) + "\n"
+			c.Write([]byte(myTime))
+			//Above is the explicit ACK that will be seen by the client and user in the terminal
+			//It will provide the time and date the date was received and completely constructed
 			fmt.Println("Exiting ProcessB TCP server!")
 			return
 		}

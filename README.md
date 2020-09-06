@@ -23,7 +23,7 @@ First off make sure both terminals are working within the 'processes' directory 
 ```bash
 /Users/philliptracy/Desktop/DistSystems/tracy_phill_MP0/processes
 ``` 
-This must be applied to both terminals (I used the cd command)
+This must be applied to both terminals (I used the cd command). An example:
 
 ```bash
  cd /Users/philliptracy/Desktop/DistSystems/tracy_phill_MP0/processes
@@ -56,8 +56,8 @@ Phillips-MacBook-Pro:processes philliptracy$ go run processB.go 1234
 To: friend@bc.edu
 Title: Meetup?
 From: tracypb@bc.edu
-Date: Sat Sep  5 17:40:24 2020
-Content: Wanna grab a bite soon?
+Date: Sun Sep  6 12:19:58 2020
+Content: Would you like to grab a bite soon?
 Exiting ProcessB TCP server!
 ``` 
 
@@ -68,15 +68,15 @@ Phillips-MacBook-Pro:processes philliptracy$ go run processA.go 127.0.0.1:1234
 >>To: friend@bc.edu
 >>Title: Meetup?
 >>From: tracypb@bc.edu
->>Content: Wanna grab a bite soon?
-->: Message received at 2020-09-05T17:40:14-04:00
+>>Content: Would you like to grab a bite soon?
+->: Message received at 2020-09-06T12:20:08-04:00
 ProcessA TCP client exiting...
 ``` 
 # Structure and Design
 
 ### Message
 Within `/message/message.go` there is a very simple struct and potential further implementation functions.
-It containts the fields
+It contains the fields:
 
 ```bash
 type Message struct {
@@ -94,5 +94,5 @@ can both be found in `/processes/` directory.
 The two communicate via functions and tools within go's 
 "net" package. ProcessB opens the channel and 'listens' for a client to connect with it,
 processA. ProcessA dials into the channel using the corresponding port number
-where it then directs the user to start entering in specific message infomration which is then received and constructed using the messaeg struct in ProcessB.
+where it then directs the user to start entering in specific message information which is then received and constructed using the message struct in ProcessB.
 

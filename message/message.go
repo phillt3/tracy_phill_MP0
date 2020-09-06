@@ -1,6 +1,7 @@
 package message
 
 type Message struct {
+	//Specified message type as noted in assignment
 	To      string
 	From    string
 	Title   string
