@@ -8,7 +8,7 @@ type Message struct {
 	Date    string
 }
 
-func NewMessage(to string, from string, title string, content string, date string) Message {
+/*func NewMessage(to string, from string, title string, content string, date string) Message {
 	var m Message
 	m.To = to
 	m.From = from
@@ -16,4 +16,4 @@ func NewMessage(to string, from string, title string, content string, date strin
 	m.Content = content
 	m.Date = date
 	return m
-}
+} */

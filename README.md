@@ -3,18 +3,18 @@ Send messages from one node to another utilizing Go packages working with TCP cl
 
 **Citation Acknowledgment:**
 * https://www.linode.com/docs/development/go/developing-udp-and-tcp-clients-and-servers-in-go/
-    * Sourced directly for necessary components in developing connections between TCP client and server
+    * Sourced directly for necessary components in developing connections between TCP client and server, specifically .listen, .dial, and channel creation functions which allow for the connection b/w processA and processB.
 * https://dave.cheney.net/practical-go/presentations/qcon-china.html#_comments_on_variables_and_constants_should_describe_their_contents_not_their_purpose
     * Information used in order to reference correct commenting format and style
     
 * https://www.geeksforgeeks.org/
-    * Sourced indirectly for information on use and implementation of fmt.FPrintf(), .write() and others
+    * Sourced indirectly for information on use and implementation of fmt.FPrintf(), which formats according to a specifier and then writes to given io.Writer
     
 * https://github.com/Dariusrussellkish/Example-MP-Solution
     * sourced indirectly for information on how to develop and organize project (including package and variable names)
     
 * golang.org
-    * indirectly and directly sourced for playground testing and introductory guidance on certain golang features
+    * indirectly and directly sourced for playground testing and introductory guidance on certain golang features (how to run, compile, import packages etc)
   
 # To Run
 This project is run completely from the terminal, specifically two separate tabs, one for the server and one for the client.
@@ -72,4 +72,27 @@ Phillips-MacBook-Pro:processes philliptracy$ go run processA.go 127.0.0.1:1234
 ->: Message received at 2020-09-05T17:40:14-04:00
 ProcessA TCP client exiting...
 ``` 
+# Structure and Design
+
+### Message
+Within `/message/message.go` there is a very simple struct and potential further implementation functions.
+It containts the fields
+
+```bash
+type Message struct {
+	To      string
+	From    string
+	Title   string
+	Content string
+	Date    string
+```
+The date, although defined as a string, is gathered and formatted automatically by the program in RFC3339 and ANSIC format.
+
+### Processes
+Code for processB.go (the TCP server program) and processA.go (the TCP client program)
+can both be found in `/processes/` directory.
+The two communicate via functions and tools within go's 
+"net" package. ProcessB opens the channel and 'listens' for a client to connect with it,
+processA. ProcessA dials into the channel using the corresponding port number
+where it then directs the user to start entering in specific message infomration which is then received and constructed using the messaeg struct in ProcessB.
 
