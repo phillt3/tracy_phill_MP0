@@ -96,3 +96,9 @@ The two communicate via functions and tools within go's
 processA. ProcessA dials into the channel using the corresponding port number
 where it then directs the user to start entering in specific message information which is then received and constructed using the message struct in ProcessB.
 
+### Possible Future Implementation
+* Handling of situation where user inputs nothing for any message field
+* Having a 'Send?' option after all information has been typed
+* Have message struct created on the client side and be able to send that to the server
+* Be able to send multiple email mesages in the same execution of the program 
+
